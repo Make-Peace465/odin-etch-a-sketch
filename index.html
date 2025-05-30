@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="changeCanvaSize">Click me to change the canva size!</button>
+    <button id="changeCanvaSize">Change Size</button>
     <div id="container"></div>
     <script>
         const container = document.querySelector("#container");
@@ -18,22 +18,16 @@
 
         function creatingBox() {
             const box = document.createElement("div");
+            box.style.height = "60px";
+            box.style.width = "60px";
+            box.style.backgroundColor = "rgb(255, 228, 196)";
             container.append(box);
         }
 
         const testingBox = document.querySelectorAll("#container > div")
-
-        //testing the node list
-        if (testingBox === null) {
-            console.log('No element found with class "my-class"');
-        } else {
-            console.log('Element found:', testingBox);
-        };
-
         testingBox.forEach(testingBox => {
         testingBox.addEventListener("mouseover", () => {
-            testingBox.setAttribute("style", "background: #FFA500;");
-        })
+            testingBox.style.backgroundColor = "#FFA500"});
         });
 
         //Remove all boxes from the canva
@@ -48,7 +42,35 @@
         const canvaSizeBtn = document.querySelector("#changeCanvaSize");
             canvaSizeBtn.addEventListener("click", function (e) {
             let answer = prompt("What is the size of the canva?");
+            num = Number(answer);
+            if ((num <= 100) && (num != 16) && (num > 0)) {
+                boxRemove();
+                for (let i=0; i<(num*num); i++) {
+                    const box = document.createElement("div");
+                    let boxSize = (960/num);
+                    console.log(boxSize);
+                    box.style.width = boxSize + "px";
+                    box.style.height = boxSize + "px";
+                    box.style.backgroundColor = "rgb(255, 228, 196)";
+                    box.style.border = "1px solid black";
+                    container.append(box);
+                }
+                const testingBox = document.querySelectorAll("#container > div")
+                testingBox.forEach(testingBox => {
+                testingBox.addEventListener("mouseover", () => {
+                    testingBox.style.backgroundColor = "#FFA500"});
+                });
+            }
         })
+
+        //testing the node list
+        // if (testingBox === null) {
+        //     console.log('No element found with class "my-class"');
+        // } else {
+        //     console.log('Element found:', testingBox);
+        // };
+
+
 
 
     </script>
