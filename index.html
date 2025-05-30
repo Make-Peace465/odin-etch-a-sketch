@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="changeCanvaSize">Click me to change the canva size!</button>
+    <div id="container"></div>
+    <script>
+        const container = document.querySelector("#container");
+        
+        for (let i=0; i<256; i++) {
+            creatingBox();
+        }
+
+        function creatingBox() {
+            const box = document.createElement("div");
+            container.append(box);
+        }
+
+        const testingBox = document.querySelectorAll("#container > div")
+
+        //testing the node list
+        if (testingBox === null) {
+            console.log('No element found with class "my-class"');
+        } else {
+            console.log('Element found:', testingBox);
+        };
+
+        testingBox.forEach(testingBox => {
+        testingBox.addEventListener("mouseover", () => {
+            testingBox.setAttribute("style", "background: #FFA500;");
+        })
+        });
+
+        //Remove all boxes from the canva
+        function boxRemove() {
+            const box = document.querySelectorAll("#container > div")
+            box.forEach(box => {
+            box.remove()
+            })
+        }
+
+
+    </script>
+</body>
+</html>
